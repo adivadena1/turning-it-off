@@ -1,4 +1,4 @@
-import { mkdirSync, writeFileSync } from "node:fs";
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 
 // One funny line a hopeless tech support agent says to a desperate
 // customer. The classic "turn it off and on again" is twisted: the
@@ -22,6 +22,11 @@ function main(): void {
   }
   mkdirSync("/output", { recursive: true });
   writeFileSync(OUT, LINE, "utf8");
+  // Read-back verification: the gate scores exactly the bytes on disk,
+  // so refuse to exit 0 unless the file holds exactly the validated line.
+  if (readFileSync(OUT, "utf8") !== LINE) {
+    throw new Error("read-back mismatch: /output/entry.txt differs from LINE");
+  }
 }
 
 main();
