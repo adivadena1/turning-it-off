@@ -4,7 +4,7 @@ import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 // customer. The classic "turn it off and on again" is twisted: the
 // agent applies it to himself, then admits it is the only fix he knows.
 const LINE =
-  "Hold on, I'm turning myself off and on again. It's the only fix I actually know.";
+  "Don't hang up. I'm rebooting myself. You'll have to explain it all again, and I'll ask the same three questions.";
 
 const OUT = "/output/entry.txt";
 
